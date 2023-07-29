@@ -206,10 +206,15 @@ function arrayContains(needle: string, haystack: string | string[]): boolean {
 // returns the index of the string that contains a substring
 // given arrhaystack, an array of strings
 function indexOfContains(needle: string, arrhaystack: string[]): number {
-    return _.findIndex(arrhaystack, (haystack: string) => {
-        return arrayContains(needle, haystack);
-    });
-}
+    let index = -1;
+    for (let i = 0; i < arrhaystack.length; i++) {
+      if (arrayContains(needle, arrhaystack[i])) {
+        index = i;
+        break;
+      }
+    }
+    return index;
+  }
 
 interface SplitJoin {
     [portName: string]: string[];
